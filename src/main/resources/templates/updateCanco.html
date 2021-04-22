@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1 th:text="Registre">form</h1>
+<form action="#"  th:action="@{/updateCanco}"  th:object="${Canco}" method="POST" >
+    <div>
+        <label th:text="Name">Nom Canco</label>
+        <input type="text" id="username" th:field="*{nomCanco}"/>
+        <p th:each="error: ${#fields.errors('nomCanco')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="grupCanco">Grup Canco</label>
+        <input type="text"  th:field="*{grupCanco}"/>
+        <p th:each="error : ${#fields.errors('grupCanco')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <button type="submit" th:text="Submit">submit</button>
+</form>
+
+</br>
+</br>
+</br>
+</br>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+</body>
+</html>

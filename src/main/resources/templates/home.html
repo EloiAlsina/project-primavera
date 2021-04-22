@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Llistat</title>
+</head>
+<body>
+<thead>
+<tr>
+
+    <th>Nom</th>
+    <th>Color</th>
+    <form action="#"  th:action="@{afegir}"  method="post">
+        <input  type="submit"  value="Afegir Canco"/>
+    </form>
+</tr></br>
+</thead>
+<tbody>
+<tr th:each="Canco : ${llistaCanco}">
+    <br>
+    <td th:text="${Canco.nomCanco}">id</td>
+    <td th:text="${Canco.grupCanco}">MTV</td>
+
+    <form action="#"  th:action="@{update/{name}(name = ${Canco.nomCanco})}" th:object="${Canco}"  method="post">
+        <input type="submit" value="Update"/>
+    </form>
+    <form action="#"  th:action="@{delete/{name}(name = ${Canco.nomCanco})}" th:object="${Canco}"  method="post">
+        <input  type="submit"  value="Remove"/>
+    </form>
+
+
+    </br>
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+</br>
+</br>
+</br>
+</br>
+
+<form th:action="@{/login}" method="post">
+    <input type="submit" value="Login"/>
+</form>
+<form th:action="@{/registration}" method="get">
+    <input type="submit" value="Register"/>
+</form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+</body>
+</html>
