@@ -35,6 +35,22 @@ public class UserService implements CrudRepository<Usuari, String> {
                             new Usuari("ADMIN", passwordEncoder("ADMIN"), "ADMIN","ADMIN")));
         }
 
+        public Usuari consultaPerId(String s) {
+            Usuari u = null;
+            boolean trobat = false;
+            for (int i = 0; i < repositori.size() && !trobat; i++) {
+                if (s.equals(repositori.get(i).getRol())){
+                    u = repositori.get(i);
+                    trobat=true;
+                }
+            }
+            return  u;
+        }
+
+        public String passwordEncoder(String s) {
+            return new BCryptPasswordEncoder().encode(s);
+        }
+
         @NonNull
         @Override
         public <S extends Usuari> S save(@NonNull S s) {
@@ -93,22 +109,5 @@ public class UserService implements CrudRepository<Usuari, String> {
         @Override
         public void deleteAll() {
 
-        }
-
-        public Usuari consultaPerId(String s) {
-                Usuari u = null;
-                boolean trobat = false;
-            for (int i = 0; i < repositori.size() && !trobat; i++) {
-                if (s.equals(repositori.get(i).getUsername())){
-
-                    u = repositori.get(i);
-                    trobat=true;
-                }
-            }
-            return  u;
-        }
-
-        public String passwordEncoder(String s) {
-            return new BCryptPasswordEncoder().encode(s);
         }
     }
