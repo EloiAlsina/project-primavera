@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class CancoService {
 
-    private List<Canco> repositori = new ArrayList<>();
+    private final List<Canco> repositori = new ArrayList<>();
 
     public void afegir(Canco e) {
         repositori.add(e);
